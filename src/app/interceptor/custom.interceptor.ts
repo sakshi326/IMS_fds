@@ -6,7 +6,7 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
   console.log(token)
   const clonedReq=req.clone({
     setHeaders:{
-      Authorization:`Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YW5pc2hhQGdtYWlsLmNvbSIsImlhdCI6MTczMzY3MDcwOSwiZXhwIjoxNzMzNjc0MzA5fQ.OdiZ4ywVk72ct4mrIpM4vLV6wqC4oUEEmvnGetAtWWg`
+      Authorization:`Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YW5pc2hhQGdtYWlsLmNvbSIsImlhdCI6MTczMzY3NTA5NSwiZXhwIjoxNzMzNjc4Njk1fQ.dQyrAzyPsilKIS22krNiXQgwSiv_oTGGQQWDnQakb8o`
       
       // Authorization:`${token}`
 
