@@ -29,12 +29,10 @@ export class AppComponent {
 
 
 isAuth():boolean{
-  console.log("Entering isAuth")
   return this.apiService.isAuthenticated();
 }
 
 isAdmin():boolean{
-  console.log(this.apiService.isAdmin())
   return this.apiService.isAdmin();
 }
 

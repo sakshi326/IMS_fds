@@ -15,7 +15,7 @@ export class ApiService {
 
   authStatuschanged = new EventEmitter<void>();
   private static BASE_URL = 'http://localhost:8081/api';
-  private static ENCRYPTION_KEY = "phegon-dev-inventory";
+  private static ENCRYPTION_KEY = "sakshi-inventory";
 
 
   constructor(private http: HttpClient) {}
@@ -26,18 +26,6 @@ export class ApiService {
       localStorage.setItem(key, encryptedValue);
     }
   
-    // Retreive from localStorage and Decrypt
-    // private getFromStorageAndDecrypt(key: string): any {
-    //   try {
-    //     const encryptedValue = localStorage.getItem(key);
-    //     console.log(encryptedValue)
-    //     console.log(!encryptedValue)
-    //     if (!encryptedValue) return null;
-    //     return CryptoJS.AES.decrypt(encryptedValue, ApiService.ENCRYPTION_KEY).toString(CryptoJS.enc.Utf8);
-    //   } catch (error) {
-    //     return null;
-    //   }
-    // }
 
     getRole(): string | null {
       return this.getFromStorageAndDecrypt("role");
@@ -60,10 +48,12 @@ export class ApiService {
 
 
   private getHeader(): HttpHeaders {
-    const token = this.getFromStorageAndDecrypt("token");
+    // const token = this.getFromStorageAndDecrypt("token");
+    const token=localStorage.getItem("Token")?.slice(1,-1);
+
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YW5pc2hhQGdtYWlsLmNvbSIsImlhdCI6MTczMzY3NTA5NSwiZXhwIjoxNzMzNjc4Njk1fQ.dQyrAzyPsilKIS22krNiXQgwSiv_oTGGQQWDnQakb8o`,
+      Authorization:`Bearer ${token}`
     });
   }
 
